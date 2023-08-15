@@ -360,5 +360,22 @@ public class XNode {
     }
     return null;
   }
+  
+  public String toStringWithContent() {
+    StringBuilder builder = new StringBuilder();
+    toStringWithContent(builder);
+    return builder.toString();
+  }
+  
+  private void toStringWithContent(StringBuilder builder) {
+    builder.append(toString());
+    Node clonedNode = getNode().cloneNode(true);
+    builder.append("<textContent>");
+    builder.append(clonedNode.getTextContent());
+    builder.append("<textContent>");
+    builder.append("<body>");
+    builder.append(body);
+    builder.append("<body>");
+  }
 
 }
